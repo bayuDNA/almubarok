@@ -1,30 +1,41 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Madrasah Diniyah Salafiyah Al Mubarok</title>
     <style>
+        /* Mengunci body agar tidak ada scrollbar liar di browser utama */
         body, html { 
             margin: 0; 
             padding: 0; 
-            height: 100%; 
-            width: 100%;
+            height: 100vh; 
+            width: 100vw;
             overflow: hidden; 
             background-color: #050a07; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        /* Mengoptimalkan iframe agar benar-benar full layar dan responsif */
         iframe { 
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%; 
             height: 100%; 
             border: none; 
+            margin: 0;
+            padding: 0;
             display: block;
+            /* Memastikan scrolling di dalam iframe terasa mulus di iOS/Android */
+            -webkit-overflow-scrolling: touch; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Masukkan URL Web App BARU yang kamu salin dari Langkah 1 di bawah ini -->
     <iframe src="https://script.google.com/macros/s/AKfycbxrZBO9sKv-te7MWJ1iLmZuVJGVJqjF9mR5UHw_A5yInGfu7AKdDvka690NdUj1nrDx/exec"></iframe>
 
 </body>

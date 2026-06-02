@@ -1,42 +1,68 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Madrasah Diniyah Salafiyah Al Mubarok</title>
     <style>
-        /* Mengunci body agar tidak ada scrollbar liar di browser utama */
-        body, html { 
+        /* Mengunci HTML dan Body secara mutlak di semua jenis device */
+        html, body { 
             margin: 0; 
             padding: 0; 
-            height: 100vh; 
-            width: 100vw;
+            width: 100%;
+            height: 100%;
+            /* Menggunakan % alih-alih vh untuk menghindari bug pemotongan tinggi saat keyboard HP muncul */
+            height: -webkit-fill-available; 
             overflow: hidden; 
             background-color: #050a07; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
         }
 
-        /* Mengoptimalkan iframe agar benar-benar full layar dan responsif */
-        iframe { 
+        /* Container khusus pembungkus iframe */
+        .iframe-container {
             position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* Memaksa rendering hardware acceleration pada iOS & Android */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Mengoptimalkan Iframe agar responsif tanpa scrollbar ganda browser luar */
+        iframe { 
             width: 100%; 
             height: 100%; 
             border: none; 
             margin: 0;
             padding: 0;
             display: block;
-            /* Memastikan scrolling di dalam iframe terasa mulus di iOS/Android */
-            -webkit-overflow-scrolling: touch; 
+            /* Kebal bug scroll Safari/iOS */
+            min-width: 100%;
+            *width: 100%;
+        }
+
+        /* 🖥️ Optimasi Khusus Layar Desktop Besar (Opsional) 
+           Jika Anda ingin membatasi agar di desktop tidak terlalu melar ke samping */
+        @media (min-width: 1024px) {
+            /* Anda bisa membiarkannya full 100% seperti bawaan di atas, 
+               atau jika ingin memberikan background ambient mewah di desktop, aktifkan kode di bawah: */
+            /*
+            body {
+                background: radial-gradient(circle at top, #0f291b 0%, #050a07 100%);
+            }
+            */
         }
     </style>
 </head>
 <body>
 
-    <iframe src="https://script.google.com/macros/s/AKfycbxrZBO9sKv-te7MWJ1iLmZuVJGVJqjF9mR5UHw_A5yInGfu7AKdDvka690NdUj1nrDx/exec"></iframe>
+    <div class="iframe-container">
+        <iframe src="https://script.google.com/macros/s/AKfycbxrZBO9sKv-te7MWJ1iLmZuVJGVJqjF9mR5UHw_A5yInGfu7AKdDvka690NdUj1nrDx/exec" allow="geolocation; microphone; camera;"></iframe>
+    </div>
 
 </body>
 </html>
